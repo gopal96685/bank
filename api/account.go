@@ -3,6 +3,7 @@ package api
 import (
 	db "bank/db/sqlc"
 	"database/sql"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -25,6 +26,7 @@ func (server *Server) createAccount(ctx *gin.Context) {
 		Currency: req.Currency,
 		Balance:  0,
 	}
+	fmt.Println("trying for db transaction ")
 
 	account, err := server.store.CreateAccount(ctx, arg)
 	if err != nil {
