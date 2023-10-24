@@ -5,7 +5,6 @@ import (
 	db "bank/db/sqlc"
 	"bank/util"
 	"database/sql"
-	"fmt"
 	"log"
 
 	_ "github.com/lib/pq"
@@ -20,7 +19,6 @@ func main() {
 	conn, err := sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
-		fmt.Println("cannot connect to db:", err)
 	}
 
 	store := db.NewStore(conn)
@@ -29,6 +27,5 @@ func main() {
 	err = server.Start(config.ServerAddress)
 	if err != nil {
 		log.Fatal("cannot start server:", err)
-		fmt.Println("cannot start server:", err)
 	}
 }
