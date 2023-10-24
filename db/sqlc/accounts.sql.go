@@ -7,6 +7,7 @@ package db
 
 import (
 	"context"
+	"fmt"
 )
 
 const createAccount = `-- name: CreateAccount :one
@@ -27,6 +28,7 @@ type CreateAccountParams struct {
 }
 
 func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (Account, error) {
+	fmt.Printf("\n\n %+v  \n\n", q.db)
 	row := q.db.QueryRowContext(ctx, createAccount, arg.Owner, arg.Balance, arg.Currency)
 	var i Account
 	err := row.Scan(
