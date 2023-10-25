@@ -2,11 +2,8 @@
 FROM golang:latest AS builder
 WORKDIR /app
 COPY . .
-<<<<<<< HEAD
 RUN go mod init bank
 RUN go mod tidy
-=======
->>>>>>> 8d0fe11544d85fca20f452ba8f517e8e3f8027ed
 RUN go build -o main main.go
 # RUN apk --no-cache add curl
 RUN apt-get install curl -y
